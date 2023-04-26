@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import './ContactForm.scss';
 import  { ContactContext } from "../../context/ContactContext";
+import './ContactForm.scss';
 
 
-let date = new Date();
+
 //   let timestamp = now.getTime();
 function ContactForm(){
 
@@ -24,12 +24,20 @@ function handleInputChange(e){
     }
 
 }
-const addContact = () =>{
-    return dispatch({type:"addContact",value: date.getTime() })
+const addContact = (e) =>{
+    e.preventDefault();
+    let date = new Date();
+    const val = date.getSeconds();
+    console.log(val);
+    return dispatch({type:"addContact",value: val })
 }
 
-    return ( <form onSubmit={addContact}>
-        <label>
+    return (
+    <div className="contact-list">
+    <form onSubmit={(e) => addContact(e)}>
+        <ul>
+            <li>
+            <label>
           Nom de famille:
           <input
             type="text"
@@ -37,7 +45,9 @@ const addContact = () =>{
             onChange={(e) => {handleInputChange(e)}}
           />
         </label>
-        <label>
+            </li>
+<li>
+<label>
           prénom:
           <input
             type="text"
@@ -45,7 +55,9 @@ const addContact = () =>{
             onChange={(e) => {handleInputChange(e)}}
           />
         </label>
-        <label>
+</li>
+    <li>
+    <label>
           adresse mail:
           <input
             type="email"
@@ -53,8 +65,13 @@ const addContact = () =>{
             onChange={(e) => {handleInputChange(e)}}
           />
         </label>
+    </li>
+
+        </ul>
+
         <button type="submit">ajout</button>
       </form>
+      </div> 
     )
 
 }

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ContactContext } from "../../context/ContactContext";
+import './ContactList.scss'
 
 
 const ContactList = () => {
@@ -7,8 +8,13 @@ const ContactList = () => {
     
     console.log(state)
     return(
-        <ul>
-            {state.map((el,i)=> <li key={i}> {el.id} {el.firstname} {el.lastname} {el.email} </li>)}
+        <ul className="display-list">
+            {state.map((el,i)=> <li key={i}> <ul className="display-name">
+                                            <li>{el.id} </li>
+                                            <li>{el.firstname} </li>
+                                            <li>{el.lastname}</li>
+                                            <li>{el.email} </li>
+                                            </ul> </li>)}
         </ul>
     )
 }
