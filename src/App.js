@@ -41,18 +41,18 @@ function App() {
 
   return (
     <div className="contact-list">
-      <h1>連絡先一覧</h1>
+      <h1>Liste de contacts</h1>
       <ul>
         {contacts.map((contact) => (
           <li key={contact.id}>
             {contact.firstname} {contact.lastname} ({contact.email}){" "}
-            <button onClick={() => deleteContact(contact.id)}>削除</button>
+            <button onClick={() => deleteContact(contact.id)}>supprimer</button>
           </li>
         ))}
       </ul>
       <form onSubmit={addContact}>
         <label>
-          姓:
+          Nom de famille:
           <input
             type="text"
             name="lastname"
@@ -62,7 +62,7 @@ function App() {
         </label>
         <br/>
         <label>
-          名:
+          prénom:
           <input
             type="text"
             name="firstname"
@@ -72,7 +72,7 @@ function App() {
         </label>
         <br/>
         <label>
-          メールアドレス:
+          adresse mail:
           <input
             type="email"
             name="email"
@@ -81,7 +81,7 @@ function App() {
           />
         </label>
         <br/>
-        <button type="submit">追加</button>
+        <button type="submit">ajout</button>
       </form>
     </div>
   );
