@@ -18,6 +18,8 @@ function handleInputChange(e){
             return dispatch({type:"changeFirstName", value:val})
         case "email":
             return dispatch({type:"changeMail", value:val})
+        default :
+            return "code not Recognize"
             
     }
 
