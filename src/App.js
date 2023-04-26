@@ -1,90 +1,16 @@
 import { useState } from "react";
-import "./components/ContactForm/contact.scss";
-import { contacts } from "./components/ContactForm/contacts";
+import { contacts } from "./components/ContactForm/ContactForm";
+import ContactList from "./components/ContactList/ContactList";
+import ContactForm from "./components/ContactForm/ContactForm";
+import ContactProvider from "./context/ContactContext";
 
 function App() {
-
-  const [newContact, setNewContact] = useState({
-    firstname: "",
-    lastname: "",
-    email: ""
-  });
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setNewContact({
-      ...newContact,
-      [name]: value
-    });
-  };
-
-  const addContact = (event) => {
-    event.preventDefault();
-    const now = new Date();
-    const timestamp = now.getTime();
-    const contactToAdd = {
-      id: timestamp,
-      ...newContact
-    };
-    setContacts([...contacts, contactToAdd]);
-    setNewContact({
-      firstname: "",
-      lastname: "",
-      email: ""
-    });
-  };
-
-  const deleteContact = (id) => {
-    const filteredContacts = contacts.filter((contact) => contact.id !== id);
-    setContacts(filteredContacts);
-  };
-
-  return (
-    <div className="contact-list">
-      <h1>Liste de contacts</h1>
-      <ul>
-        {contacts.map((contact) => (
-          <li key={contact.id}>
-            {contact.firstname} {contact.lastname} ({contact.email}){" "}
-            <button onClick={() => deleteContact(contact.id)}>supprimer</button>
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={addContact}>
-        <label>
-          Nom de famille:
-          <input
-            type="text"
-            name="lastname"
-            value={newContact.lastname}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br/>
-        <label>
-          prénom:
-          <input
-            type="text"
-            name="firstname"
-            value={newContact.firstname}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br/>
-        <label>
-          adresse mail:
-          <input
-            type="email"
-            name="email"
-            value={newContact.email}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br/>
-        <button type="submit">ajout</button>
-      </form>
-    </div>
-  );
+    return (
+      <ContactProvider>
+        <ContactForm/>
+        <ContactList/>
+      </ContactProvider>
+    )
 }
 
 export default App;
