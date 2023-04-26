@@ -1,0 +1,38 @@
+.contact-list {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        padding: 4px 8px;
+        background-color: skyblue;
+        margin: 4px;
+    }
+
+    form {
+        background-color: skyblue;
+        border-radius: 20px;
+        box-sizing: border-box;
+        height: 150px;
+        padding: 20px;
+        width: 320px;
+        color: white;
+
+        input {
+            border-radius: 5px;
+            border-color: white;
+        }
+
+        button {
+            display: flex;
+            align-items: end;
+        }
+    }
+
+}
