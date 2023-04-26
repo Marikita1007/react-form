@@ -5,7 +5,7 @@ import './ContactList.scss'
 
 const ContactList = () => {
     const [state,dispatch] = useContext(ContactContext);
-    
+
     console.log(state)
     return(
         <ul className="display-list">
@@ -14,6 +14,7 @@ const ContactList = () => {
                                             <li>{el.firstname} </li>
                                             <li>{el.lastname}</li>
                                             <li>{el.email} </li>
+                                            <button onClick= { () => dispatch({type:"delContact",value:el.id})}>X</button>
                                             </ul> </li>)}
         </ul>
     )

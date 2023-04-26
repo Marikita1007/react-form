@@ -27,7 +27,7 @@ function handleInputChange(e){
 const addContact = (e) =>{
     e.preventDefault();
     let date = new Date();
-    const val = date.getSeconds();
+    const val = date.getTime();
     console.log(val);
     return dispatch({type:"addContact",value: val })
 }
@@ -36,8 +36,8 @@ const addContact = (e) =>{
     <div className="contact-list">
     <form onSubmit={(e) => addContact(e)}>
         <ul>
-            <li>
-            <label>
+        <li>
+        <label>
           Nom de famille:
           <input
             type="text"
@@ -45,16 +45,16 @@ const addContact = (e) =>{
             onChange={(e) => {handleInputChange(e)}}
           />
         </label>
-            </li>
+        </li>
 <li>
 <label>
-          prénom:
+          <p>prénom:</p>
           <input
             type="text"
             name="firstname"
             onChange={(e) => {handleInputChange(e)}}
           />
-        </label>
+    </label>
 </li>
     <li>
     <label>

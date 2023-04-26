@@ -1,5 +1,4 @@
 import React, { useReducer, createContext } from 'react'; 
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 // const [contacts, setContacts] = useState([
 //     {
@@ -29,30 +28,33 @@ let updateState =  {
     firstname: "",
     lastname: "",
     email: ""
-}
+};
 function contactReducer(state, action){
+    let newList = [...state];
     switch(action.type){
         case"changeLastName":
-            updateState.lastname = action.value
-            return[...state]
-        
+            updateState.lastname = action.value;
+            return[...state];
         case "changeFirstName":
-            updateState.firstname = action.value
-            return[...state]
+            updateState.firstname = action.value;
+            return[...state];
         case "changeMail":
-            updateState.email = action.value
-            return[...state]
+            updateState.email = action.value;
+            return[...state];
         case "addContact":
-            let newList = [...state];
-            updateState.id = action.value
+            updateState.id = action.value;
             const newElem= {
                 id: updateState.id ,
                 firstname: updateState.firstname,
                 lastname: updateState.lastname,
                 email: updateState.email
-            }
+            };
             newList.push(newElem);
             return[...newList];
+        case "delContact":
+             let List = newList.filter(el =>  el.id != action.value);
+             return [...List];
+
         default:
             return [...state];
     }

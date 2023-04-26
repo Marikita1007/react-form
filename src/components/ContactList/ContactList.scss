@@ -5,8 +5,22 @@
     border-radius: 5px;
     background-color:lightblue;
     list-style: none;
-    width: 50em;
+    width: 200px;
     ul  {
+        display: flex;
         list-style-type: none;
+    }
+    ul > li {
+        padding:0em;
+        margin: 0em;
+    }
+    button {
+        width: 10rem;
+    }
+}
+.display-list{
+    list-style: none;
+    li{
+        margin-top: 5px;
     }
 }
